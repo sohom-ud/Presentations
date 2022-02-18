@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/blood.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			const size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+### Overview
+- **Project 1**: von Karman similarity
+	- [Reynolds decomposition](#Reynolds)
+	- [Autocorrelation functions](#Autocorrelation)
+	- [Blackman-Tukey Algorithm](#BT)
+- **Project 2**: Dissipation
+	- sd</script></section><section  data-markdown><script type="text/template">### **Project 1**: von Karman similarity</script></section><section  data-markdown><script type="text/template"><!-- .slide: id="Reynolds" -->
+----
+### Reynolds decomposition
+----
+- `$$\mathbf{B}(\mathbf{x}, t) = \overline{\mathbf{B}}(\mathbf{x}, t) + \mathbf{b}(\mathbf{x}, t)$$`
+	- `$\mathbf{B}(\mathbf{x}, t)\to$` Mean Magnetic field 
+	- `$\mathbf{b}(\mathbf{x}, t)\to$` Fluctuations in the magnetic field</script></section><section ><section data-markdown><script type="text/template"><!-- .slide: id="Autocorrelation" -->
+----
+### Correlation functions
+----
+ `$$R(\mathbf{r}, t) = \langle\mathbf{b}(\mathbf{x}, t).\mathbf{b}(\mathbf{x}+\mathbf{r}, t)\rangle$$`
+- Homogeneity, Isotropy `$\to$` `$R$` depends only on `$r$` </script></section><section data-markdown><script type="text/template"><!-- .slide: id="BT" -->
+----
+### Blackman-Tukey Algorithm
+----</script></section><section data-markdown><script type="text/template">### Taylor Hypothesis
+`$$r = V_{SW} \,\tau$$`
+- `$V_{SW}\to$` mean solar wind speed<!-- .element: class="fragment" data-fragment-index="1" --></script></section></section><section  data-markdown><script type="text/template">### Computing the correlation length
+<></script></section><section  data-markdown><script type="text/template">### Normalization
+- With respect to energy:
+	`$$R_I(r)\to R_I(r)/R_I(0)$$`
+- With respect to the correlation length scale:<!-- .element: class="fragment" data-fragment-index="1" -->
+	`$$R_I(r)\to R_I(r/\lambda)$$`</script></section><section  data-markdown><script type="text/template">### von Karman similarity hypothesis
+- forms the basis for phenomenological treatments of turbulence decay of the form
+	`$$\textrm{decay rate} \propto \frac{(\textrm{velocity})^3}{\textrm{similarity scale}}$$`
+`$$R(r, t) = u^2(t) \hat{R}(r/L(t))$$`</script></section><section  data-markdown><script type="text/template">### Structure functions
+`$$S^{(2)}(\mathbf{r}, t) = \langle(\mathbf{b}(\mathbf{x} + \mathbf{r}, t) - \mathbf{b}(\mathbf{x}, t))^2\rangle$$`
+`$$\frac{S_I^{(2)}(r/\lambda_I)}{R_I(0)} = 2\frac{R_I(1. - R_I(r/\lambda_I)}{R_I(0)}$$`<!-- .element: class="fragment" data-fragment-index="1" --></script></section><section  data-markdown><script type="text/template">### Karman Howarth equations for MHD</script></section><section  data-markdown><script type="text/template">### von Karman decay laws
+`$$\frac{\mathrm{d}u^2}{\mathrm{d}t} = -\frac{\alpha u^3}{L}, \quad \frac{\mathrm{d}L}{\mathrm{d}t} = \beta u$$`</script></section><section  data-markdown><script type="text/template"><div class="reset-margin" style="position: absolute; left: 48px; top: 70px; height: 385px; min-height: 385px; width: 576px; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly" >
+
+<p style="line-height: 0" class="reset-paragraph"><img src="Attachments/Pasted image 20220217183615.png" alt="" style="width: 400px"></img></p>
+</div>
+<div class="reset-margin" style="position: absolute; left: 48px; top: 490px; height: 140px; min-height: 140px; width: 864px; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly" >
+
+- 5th February, 1998 - 30th March, 2008
+- ~1000 intervals
+</div>
+<!-- .slide: class="drop" --></script></section><section  data-markdown><script type="text/template">### Elsasser variables
+`$$\mathbf{z}_\pm = \mathbf{v}\pm\mathbf{b}$$`
+- `$\mathbf{v}\to$` velocity
+- `$\mathbf{b}\to$` magnetic field (in Alfven units)</script></section><section  data-markdown><script type="text/template">---
+### ACE Elsasser field</script></section><section  data-markdown><script type="text/template">### **Project 2**: MMS</script></section><section  data-markdown><script type="text/template">### Dissipation functions
+- Pi-D
+- PS</script></section><section  data-markdown><script type="text/template">### Simulations
+- Bill 2016 ApJL</script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealCustomControls,
+		  RevealMenu,
+		  RevealChalkboard, 
+        ],
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"transition":"slide","transitionSpeed":"fast"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
