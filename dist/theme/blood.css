@@ -16,7 +16,7 @@
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
   --r-heading-font: Ubuntu, sans-serif;
-  --r-heading-color: #eee;
+  --r-heading-color: rgb(255, 255, 0);
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
   --r-heading-text-transform: uppercase;
@@ -127,6 +127,7 @@
 .reveal strong,
 .reveal b {
   font-weight: bold;
+  color: rgba(255, 0, 0, 0.877)
 }
 .reveal em {
   font-style: italic;
