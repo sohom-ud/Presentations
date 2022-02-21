@@ -80,7 +80,8 @@
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template">----
+      <div class="slides"><section  data-markdown><script type="text/template">
+----
 ### Overview
 ----
 - **Project 1**: Verifying von Karman similarity using ACE data
@@ -89,11 +90,16 @@
 - **Project 2**: Energy cascade and dissipation survey using MMS data </script></section><section  data-markdown><script type="text/template">### **Project 1.1**
 Verifying von Karman similarity hypothesis using ACE magnetic field data
 <br>
-<img src="Attachments/ACE_magnetic_paper.png" height="500"><br>
-(published in ApJL, 2021)</script></section><section  data-markdown><script type="text/template">### Motivation
+<img src="Attachments/ACE_magnetic_paper.png" height="600"><br>
+(published in ApJL, 2021)</script></section><section ><section data-markdown><script type="text/template">### Motivation
 - The **von Karman-Howarth equations** are the first entry in the hierarchy of moment equations
 - Forms the basis of the famous **Kolmogorov "4/5" law** for evaluating the energy cascade rate
-- Self-preservation of two-point correlation functions during decay `$\to$` von Karman decay law</script></section><section  data-markdown><script type="text/template">### What we do in this paper
+- Self-preservation of two-point correlation functions during decay `$\to$` von Karman decay law</script></section><section data-markdown><script type="text/template">### Karman-Howarth equations
+`$$\frac{\partial}{\partial t}\left(u'^2 f\right) - \frac{u'^3}{r^4}\frac{\partial}{\partial r}\left(r^4 h\right) = \frac{2\nu u'^2}{r^4}\frac{\partial}{\partial r}\left(r^4 \frac{\partial f}{\partial r}\right)$$`
+- `$u'\to$` square root of mean turbulent velocity
+- `$f(r, t)\to$` longitudinal correlation
+- `$g(r, t)\to$` lateral correlation
+- `$h(r, t)\to$` triple correlation</script></section></section><section  data-markdown><script type="text/template">### What we do in this paper
 - Evaluate the self-preservation hypothesis directly for magnetic autocorrelation functions
 	-  at 1 AU
 	-  Data obtained from: ACE (**A**dvanced **C**omposition **E**xplorer)
@@ -120,7 +126,7 @@ Verifying von Karman similarity hypothesis using ACE magnetic field data
 	- Length `$\lambda_I$` at which `$$R_I(\lambda_I')/R_I (0 {}) = 1/e \approx 0.368$$`
 - **Method 2** : Linear fit to logarithm of correlation function
 	`$$\log\frac{R_I(\ell)}{R_I(0)} = -\frac{\ell}{\lambda_I}$$`</script></section><section  data-markdown><script type="text/template">### von Karman similarity hypothesis
-- At any stage of decay, the correlation functions can be expressed as 
+- At any stage of decay, the correlation functions can be expressed as  (*de Karman, Howarth (1938)*)
   `$$R(r, t) = u^2(t)\hat{R}(r/L(t))$$`
 - Constraint conditions `$\to$` **von Karman decay laws**
 	`$$\frac{\mathrm{d}u^2}{\mathrm{d}t} = -\alpha \frac{u^3}{L}, \quad   \frac{\mathrm{d}L}{\mathrm{d}t} = \beta u
@@ -143,7 +149,7 @@ Verifying von Karman similarity hypothesis using ACE magnetic field data
 <b>Figure</b>: Twice-normalized structure functions on a linear scale(left) and log-log scale(right)</script></section><section ><section data-markdown><script type="text/template">### **Project 1.2**
 Verifying von Karman similarity using Elsasser variables
 <br>
-<img src="Attachments/ACE_Elsasser_paper.png" height="400"></img><br>
+<img src="Attachments/ACE_Elsasser_paper.png" height="600"></img><br>
 (submitted to PRE)</script></section><section data-markdown><script type="text/template">### Elsasser variables
 `$$\mathcal{Z}_\pm = \mathbf{V}\pm\mathbf{B}$$`
 - `$\mathbf{V}\to$` velocity
@@ -154,19 +160,23 @@ Verifying von Karman similarity using Elsasser variables
 - ACE Level 2 SWEPAM data
 	- 64 s resolution, resampled to 1 min
 	- **Range**: February 5, 1998 - March 30, 2008
-- Current analysis consists of only fast wind samples (`$> 500$` km/s) `$\to$` 987 intervals of length 1 day</script></section><section  data-markdown><script type="text/template">**Incompressible MHD equations**
+- Current analysis consists of only fast wind samples (`$> 500$` km/s) `$\to$` 987 intervals of length 1 day</script></section><section ><section data-markdown><script type="text/template">**Incompressible MHD equations**
 `$$ \partial_t z_i^\pm = - (z_k^\mp \mp B_{0k})\partial_k z_i^\pm - \partial_i P + \nu \partial_k \partial_k z_i^\pm $$`
 **Correlation functions**
 `$$R_\pm({\bf r},t) = 
 \langle {\bf z}^\pm({\bf x},t)\cdot {\bf z}^\pm({\bf x}+{\bf r},t)$$`
 **Structure functions for Elsasser variables**
-`$$S_\pm^{(2)}(r, t) = \langle(\mathbf{z}_\pm(\mathbf{x}+\mathbf{r}, t)-\mathbf{z}_\pm(\mathbf{x}))^2\rangle$$`</script></section><section ><section data-markdown><script type="text/template">### von Karman similarity hypothesis for MHD
+`$$S_\pm^{(2)}(r, t) = \langle(\mathbf{z}_\pm(\mathbf{x}+\mathbf{r}, t)-\mathbf{z}_\pm(\mathbf{x}))^2\rangle$$`</script></section><section data-markdown><script type="text/template">### Karman-Howarth equations for MHD
+`$$\partial_t R_{ii}^\pm(r, t) = -2\frac{\partial Q^\pm(r)}{\partial r} - 4\frac{Q^\pm}{r} + 2\nu\left[\frac{\partial^2 R_{ii}^\pm}{\partial r^2} + \frac{2}{r}\frac{\partial R_{ii}^\pm}{\partial r}\right]
+$$`
+- `$R_{ii}^\pm\to$` Trace of the second-order correlation
+- `$Q_{k}^\pm\to$` Triple correlations</script></section></section><section ><section data-markdown><script type="text/template">### von Karman similarity hypothesis for MHD
 - At any stage of the decay, the Elsasser correlation function can be expressed as 
   `$$R_\pm(r, t) = Z_\pm^2(t)\hat{R}_\pm(r/L_\pm(t))$$`
   - `$\hat{R}_\pm\to$` universal correlation functions
 <br></br>
 - Similarly, for structure functions 
-  `$$S_\pm^{(2)}(r, t) = u^2(t) \hat{S}_\pm^{(2)}(r/L_\pm(t))$$`</script></section><section data-markdown><script type="text/template">### von Karman decay laws for MHD
+  `$$S_\pm^{(2)}(r, t) = Z_\pm^2(t) \hat{S}_\pm^{(2)}(r/L_\pm(t))$$`</script></section><section data-markdown><script type="text/template">### von Karman decay laws for MHD
 `$$\frac{\mathrm{d}Z_\pm^2}{\mathrm{d}t} = -\alpha_\pm\frac{Z_\pm^2 Z_\mp}{L_\pm}$$`
 `$$\frac{\mathrm{d}L_\pm}{\mathrm{d}t} = \beta_\pm Z_\mp$$`</script></section></section><section  data-markdown><script type="text/template"><split even>
 <p style="line-height: 0" class="reset-paragraph"><img src="Attachments/zplus_unnorm.png" alt="" ></img></p>
@@ -178,16 +188,17 @@ Verifying von Karman similarity using Elsasser variables
 <p style="line-height: 0" class="reset-paragraph"><img src="Attachments/zminus_1norm.png" alt="" ></img></p>
 <p style="line-height: 0" class="reset-paragraph"><img src="Attachments/zminus_2norm.png" alt="" ></img></p>
 </split>
-<b>Figure</b>: Autocorrelation functions of `$z_-$` at different stages of normalization.</script></section><section  data-markdown><script type="text/template"><img src = "Attachments/z_sf_2norm.png" height="700"><br>
+<b>Figure</b>: Autocorrelation functions of `$z_-$` at different stages of normalization.</script></section><section  data-markdown><script type="text/template"><img src = "Attachments/z_sf_2norm.png" height="500"><br>
 <b>Figure</b>: Structure functions of `$z_+$` and `$z_-$`. Inset shows zoomed out version.</script></section><section  data-markdown><script type="text/template"><img src="Attachments/z_sum_sf_2norm_loglog.png" height="700"><br>
-<b>Figure</b>: Structure function of `$z = z_+ + z_-$` on a log-log scale.</script></section><section  data-markdown><script type="text/template">### **Project 2**
+<b>Figure</b>: Sum of structure functions of `$z_+$` and `$z_-$` on a log-log scale.</script></section><section  data-markdown><script type="text/template">### **Project 2**
 Energy dissipation and cascade survey using MMS data
-<img src="Attachments/MMS_paper.png" height="400"><br>
+<img src="Attachments/MMS_paper.png" height="600"><br>
 (in progress)</script></section><section  data-markdown><script type="text/template">### Motivation
 - Dissipation via the nonlinear energy cascade is not well understood.
 - Major questions:
 	- How to connect fluid-scale energy transfer rates with dissipation rates at kinetic scales?
-	- What controls the fraction of dissipation on different charged species?</script></section><section  data-markdown><script type="text/template">### What we do in this paper
+	- What controls the fraction of dissipation on different charged species?</script></section><section  data-markdown><script type="text/template"><p style="line-height: 0" class="reset-paragraph"><img src="Attachments/Pasted image 20220221100711.png" alt="" ></img></p>
+<b>Figure</b>: Simple cascade diagram based on incompressible equations.</script></section><section  data-markdown><script type="text/template">### What we do in this paper
 - Compute energy decay rates, `$\epsilon_\mathrm{vK}$` at the largest scales using the **von Karman law**
 - Compute energy cascade rates, `$\epsilon_\mathrm{PP98}$` using the **Politano-Pouquet Law**
 - Compute the dissipation/heating rates, using the **Pi-D** approach, and connect MHD and kinetic measures of turbulent heating rate.</script></section><section  data-markdown><script type="text/template">### Data 
@@ -212,7 +223,7 @@ Energy dissipation and cascade survey using MMS data
 `$$\begin{align}
 \partial_t \mathcal{E}_s^f + \nabla.(\mathcal{E}_s^f + \mathbf{P}_s.\mathbf{u}_s) &= (\mathbf{P}_s.\nabla).\mathbf{u}_s + n_s q_s \mathbf{u}_s.\mathbf{E} \\ \\
 \partial_t \mathcal{E}_s^{th} + \nabla.(\mathcal{E}_s^{th}\mathbf{u}_s + \mathbf{h}_s) &= -(\mathbf{P}_s.\nabla).\mathbf{u}_s \\ \\
-\partial_t \mathcal{E}_s^m + \frac{c}{4\pi}\nabla.(\mathbf{E}\times\mathbf{B}) &= -\mathbf{j}.\mathbf{E}
+\partial_t \mathcal{E}^m + \frac{c}{4\pi}\nabla.(\mathbf{E}\times\mathbf{B}) &= -\mathbf{j}.\mathbf{E}
 \end{align}
 $$`</script></section><section  data-markdown><script type="text/template">- The pressure-strain interaction can be further decomposed:
   `$$-(\mathbf{P}.\nabla).\mathbf{u} = -p\theta - \Pi_{ij}D_{ij}$$`
@@ -239,12 +250,22 @@ $$`</script></section><section  data-markdown><script type="text/template">- The
 	- depends upon how much B changes over one gyroperiod at the scale of the particle gyroradius.
 	- timescale over which a significant change in B occurs `$\to$` nonlinear timescale, `$\tau_\mathrm{nl}(\ell) = \frac{\ell}{\delta B_\ell}$`</script></section><section  data-markdown><script type="text/template">- **Hypothesis**: `$$\frac{Q_p}{Q_e}\sim \frac{\tau_\mathrm{ci}}{\tau_\mathrm{nl}(d_i)}$$`
 - `$\tau_\mathrm{ci}\to$` ion cyclotron time, `$\tau_\mathrm{nl}(\ell)\to$` nonlinear timescale at length scale `$\ell$`</script></section><section  data-markdown><script type="text/template"><img src="Attachments/QiQe_tcitnl.png" height="700"><br>
-<b>Figure</b>: Relative proton-electron heating vs. ratio of ion cyclotron time to nonlinear time at `$d_i$`</script></section><section  data-markdown><script type="text/template">### Conclusion
+<b>Figure</b>: Relative proton-electron heating vs. ratio of ion cyclotron time to nonlinear time at `$d_i$`</script></section><section ><section data-markdown><script type="text/template">### Conclusion
 - In **Project 1**, we verified the *von Karman similarity hypothesis* in the solar wind using magnetic field and velocity data measured by ACE.
 - In **Project 2**, we use data from MMS observations to show that:
 	- `$\epsilon_\mathrm{vK}\approx\epsilon_\mathrm{PP98}$`
 	- relative proton-electron heating rate increases with the total heating rate,
-	- the relative proton-electron heating is controlled by the ratio of the proton cyclotron time to the nonlinear time at the ion inertial scale.
+	- the relative proton-electron heating is controlled by the ratio of the proton cyclotron time to the nonlinear time at the ion inertial scale.</script></section><section data-markdown><script type="text/template">- These projects help validate some of the key physics underlying turbulence theory in MHD.
+	- **Project 1** provides an empirical confirmation of the applicability of the von Karman similarity hypothesis to interplanetary magnetic field observations.
+	- **Project 2** validates the idealized picture of energy cascade and connects the energy transfer rates at fluid scales to the dissipation rates at kinetic scales.</script></section></section><section  data-markdown><script type="text/template">### Future plans
+- Verify the similarity hypothesis for near-Sun data using PSP
+	- Is it valid to use Taylor hypothesis in this case? (*Chhiber et al. 2019*)
+- Investigate the effect of cross-helicity in the decay of correlation functions of `$z_+$` and `$z_-$`
+- Currently involved in a group study looking at the anisotropy of the correlation length scales as a function of heliocentric distance
+	- uses PSP, ACE, WIND and Voyager data</script></section><section  data-markdown><script type="text/template"># Thank you!
+ Slides can be found here:
+<br>
+ https://sohom-ud.github.io/Presentations/
 </script></section></div>
     </div>
 
